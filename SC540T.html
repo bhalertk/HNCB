@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+<title>SC540T Verify Code</title>
+<style>
+body {
+  background-color: black;
+  color: white;
+}
+input {
+  width:60px;
+}
+</style>
+</head>
+<body>
+  <h2>SC540T Verify Code</h2>
+	<div>
+      <label >Branch Code</label>
+      <select id="branch">
+        <option value="9010">9010</option>
+        <option value="9020">9020</option>
+        <option value="9030">9030</option>
+        <option value="9050">9050</option>
+        <option value="9070">9070</option>
+        <option value="9090">9090</option>
+        <option value="9100">9100</option>
+        <option value="9130">9130</option>
+        <option value="9140">9140</option>
+        <option value="9180">9180</option>        
+      </select>
+    </div><br>      
+	<div>
+	  <label>TX Date:</label>
+	  <input type="tel" id="tx_date" maxlength="8">
+	</div><br>      	
+	<div>
+	  <label>Citrix ID (不需輸入HB):</label>
+	  <input type="tel" id="cid" value="" maxlength="5">
+	</div><br>      	
+	<div>
+	  <button type="button" onclick="cipher()">Cipher Code</button>
+	</div><br>    
+	<script type="text/javascript">
+	  var today = new Date();
+	  var tdm = today.getMonth() + 1;
+	  if (tdm.toString().length == 1) {
+    	tdm = "0" + tdm;
+	  }
+	  var tdd = today.getDate()
+	  if (tdd.toString().length == 1) {
+    	tdd = "0" + tdd;
+	  }
+	  var tdy = today.getFullYear();	  
+	  var td = "";
+	  td = td.concat(tdy,tdm,tdd);
+	  document.getElementById("tx_date").value = td;
+
+	  function cipher() {
+	  	var branch = document.getElementById('branch').value;
+	  	var tx_date = document.getElementById('tx_date').value;
+	  	var cid = document.getElementById('cid').value;
+	  	if (branch == '9090') {
+        cid = '11111';
+      }
+	  	if(tx_date.length != 8){
+	  		alert('please check TX_DATE');
+	  		document.getElementById("tx_date").focus();
+	  		return;
+	  	}	  	
+	  	if(cid.length < 4){
+	  		alert('please check Citrix ID');
+	  		document.getElementById("cid").focus();
+	  		return;
+	  	}
+	  	cid = cid.substring(cid.length-2,cid.length);
+  		alert('驗證碼:' + handle(branch) * handle(tx_date) * handle(cid));
+	  }
+
+	  function handle(st) {
+	  	var i;	  	
+	  	var r = 0;
+		for (i = 0; i < st.length; i++) {
+  		  var parsed = parseInt(st[i]);
+  		  if (isNaN(parsed)) {
+  		    parsed = 0;
+  		  }
+  		  r += parsed;  		  
+		}
+  		return r;
+	  }
+	  
+	</script>   
+</body>
+</html>

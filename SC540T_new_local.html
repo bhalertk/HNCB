@@ -24,10 +24,10 @@
   <!-- GK Loader use RequireJS to load module -->
   <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.16/require.min.js"></script>
   <!--Plug in GK-->
-  <script src="//bhalertk.github.io/HNCB/components/jquery.gk/jquery.gk.min.js"></script>    
+  <script src="//192.168.1.167/HNCB/components/jquery.gk/jquery.gk.min.js"></script>  
   <!-- Load GK components -->
-  <script components="//bhalertk.github.io/HNCB/components/gk-jquerymobile/fieldcontain.html,//bhalertk.github.io/HNCB/components/gk-jquerymobile/button.html,//bhalertk.github.io/HNCB/components/gk-jquerymobile/text-input.html,//bhalertk.github.io/HNCB/components/gk-jquerymobile/header.html,//bhalertk.github.io/HNCB/components/gk-jquerymobile/page.html,//bhalertk.github.io/HNCB/components/gk-jquerymobile/selectmenu.html,//bhalertk.github.io/HNCB/components/gk-jquerymobile/content.html,//bhalertk.github.io/HNCB/components/gk-ext/gk-text.html"
-  callback="mobileInitPage" src="//bhalertk.github.io/HNCB/components/gk-loader/gk-loader.min.js"></script>
+  <script components="//192.168.1.167/HNCB/components/gk-jquerymobile/fieldcontain.html,//192.168.1.167/HNCB/components/gk-jquerymobile/button.html,//192.168.1.167/HNCB/components/gk-jquerymobile/text-input.html,//192.168.1.167/HNCB/components/gk-jquerymobile/header.html,//192.168.1.167/HNCB/components/gk-jquerymobile/page.html,//192.168.1.167/HNCB/components/gk-jquerymobile/selectmenu.html,//192.168.1.167/HNCB/components/gk-jquerymobile/content.html,//192.168.1.167/HNCB/components/gk-ext/gk-text.html"
+  callback="mobileInitPage" src="//192.168.1.167/HNCB/components/gk-loader/gk-loader.min.js"></script>
   <!-- Uncomment the following to include cordova in your app project -->
   <!-- <script src="//ezoui.com/platforms/android_or_ios/cordova.js"></script> -->
   <!-- Export JS  -->
@@ -44,9 +44,9 @@
       }
       var tdy = today.getFullYear();
       var td = "";
-      td = td.concat(tdy,"-", tdm, "-", tdd);    
-      // alert(td);
-      document.getElementById("tx_date").value = td;
+      td = td.concat(tdy, tdm, tdd);    
+      //alert(td);
+      //document.getElementById("tx_date").value = td;
       return td;
     }  
 
@@ -96,16 +96,6 @@
       //var obj = document.getElementById("tx_date");
       //obj.value = '789';
       //alert($("#tx_date").val());
-    }
-
-    $(document).ready(function() {
-        // myTimer();
-        showTxdate();
-    });
-    function myTimer() {
-      var dateObj = new Date();
-      alert(dateObj);
-      document.getElementById('tx_date').value = dateObj.toISOString().slice(0,10);      
     }
     
   </script>
